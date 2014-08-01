@@ -1,0 +1,99 @@
+import os
+import readline
+
+# simple commands
+h = help
+#
+
+
+# from the Python library ref
+
+histfile = os.path.join(os.environ["HOME"], ".pyhist")
+try:
+    readline.read_history_file(histfile)
+except IOError:
+    pass
+import atexit
+atexit.register(readline.write_history_file, histfile)
+del os, histfile
+
+
+# a hack for completion using tab key
+# (lets it make tabs when string to be completed is empty)
+
+import rlcompleter
+
+class MyCompleter(rlcompleter.Completer):
+    def complete(self, text, state):
+        if (text == ''):
+            if (state == 0):
+                return '\t'
+            elif (state == 1):
+                return '\tx'
+            else:
+                return None
+            
+        return rlcompleter.Completer.complete(self, text, state)
+
+readline.set_completer(MyCompleter(locals()).complete)
+readline.parse_and_bind("tab: complete")
+
+del readline
+
+
+# Print command history to the screen.
+# This will only work on systems that have /dev/stdout.
+def history(length = 20):
+   #orig_length = rlcompleter.readline.get_history_length()
+   #rlcompleter.readline.set_history_length(length)
+   rlcompleter.readline.write_history_file('/dev/stdout')
+   #rlcompleter.readline.set_history_length(orig_length)
+   #
+   #hlen = rlcompleter.readline.get_current_history_length()
+   #print hlen
+   #for i in range(hlen - length - 1, hlen - 1):
+   #   print rlcompleter.readline.get_history_item(i)
+
+
+# read entire contents of a file
+def slurp(fname):
+   fid = open(fname)
+   s = fid.read()
+   fid.close()
+   return s
+
+
+# sum the elements of an iterable
+def Sum(l):
+    res = 0
+    for x in l:
+        res += x
+    return res
+
+
+# web browsers
+#import webbrowser
+#webbrowser._tryorder = ['netscape', 'lynx']
+#del webbrowser
+
+
+
+def interrogate(item):
+	"""Print useful information about item."""
+	if hasattr(item, '__name__'):
+		print "NAME:    ", item.__name__
+	if hasattr(item, '__class__'):
+		print "CLASS:   ", item.__class__.__name__
+	print "ID:      ", id(item)
+	print "TYPE:    ", type(item)
+	print "VALUE:   ", repr(item)
+	print "CALLABLE:",
+	if callable(item):
+		print "Yes"
+	else:
+		print "No"
+	if hasattr(item, '__doc__'):
+		doc = getattr(item, '__doc__')
+	doc = doc.strip()   # Remove leading/trailing whitespace.
+	firstline = doc.split('\n')[0]
+	print "DOC:     ", firstline

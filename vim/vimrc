@@ -1,0 +1,21 @@
+color desert
+"color ron
+"color delek
+
+"set nocompatible    		" Use Vim defaults (much better!)
+set bs=2			" allow backspacing over everything in insert mode
+set ts=4			" tab stop length
+set nu				" Set line numbering
+"set ai				" always set autoindenting on
+"set backup     		" keep a backup file
+set viminfo='50,\"90    	" read/write a .viminfo file, don't store more than 50 lines of registers
+set history=100      		" keep 50 lines of command line history
+set ruler       		" show the cursor position all the time
+
+"set iskeyword=-,48-58,A-Z,a-z,_
+"set incsearch
+
+set foldmethod=indent
+set foldlevel=99
+
+

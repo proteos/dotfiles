@@ -1,0 +1,5 @@
+;; load path of init files
+;(add-to-list 'load-path (expand-file-name "~/.emacs.d/init"))
+
+;; load my init file
+(load "~/.emacs.d/init/init.el")
