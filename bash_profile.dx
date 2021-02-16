@@ -2,9 +2,35 @@
 
 # activate all my defaults
 . ~/dotfiles/bash_profile.base
+. ~/.secrets
 
-export EDITOR=vim
-export VISUAL=vim
+# PATHs
 
 
-echo "END DX PROFILE"
+
+
+### --- Aliases ---  ###
+alias x="conda activate venv3"
+alias x_main="x; dx login --token $DX_TOKEN_MAIN"
+alias x_dev="x; dx login --token $DX_TOKEN_DEV"
+alias x_coh="x; dx login --token $DX_TOKEN_COH"
+alias x_training="x; dx login --token $DX_TOKEN_TRAINING"
+alias x_staging="x; dx login --staging --token $DX_TOKEN_STAGING"
+alias x_biogen="x; dx login --token $DX_TOKEN_BIOGEN"
+
+alias dxd="dx describe"
+alias dxl="dx ls -al"
+alias beeline="cd ~/local/spark/bin; ./beeline"
+alias bee_dev="~/local/spark/bin/beeline -u jdbc:hive2://query.us-east-1.translational.dnanexus.com:10000/\;ssl=true -n $DX_BEELINE_DEV"
+alias bee_coh="~/local/spark/bin/beeline -u jdbc:hive2://query.us-east-1.translational.dnanexus.com:10000/\;ssl=true -n $DX_BEELINE_COH"
+
+alias af="conda activate airflow; cd ~/dev/airflow; breeze start-airflow"
+alias wdl="java -jar ~/local/lib/dxCompiler"
+
+# alias _dx ". ~/local/bin/start_dx"
+
+
+## Python stuff
+# pyenv-virtualenv shell integration
+alias py2="pyenv shell 2.7.15"
+alias py3="pyenv shell 3.8.2"

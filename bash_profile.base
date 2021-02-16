@@ -1,34 +1,42 @@
 ### Base Environment
 
-### Aliases
-alias ls='ls -G'
-alias l="ls -1F"
-alias ll="ls -lFh"
-alias la='ls -AlFh'
 
-alias jl="jupyter lab"
+### --- Aliases ---  ###
+alias l="ls -1F"
+alias ls='ls -FhN --color=auto --group-directories-first'
+alias ll='ls -l'   # fails with macOS ls; `brew install coreutils` to install GNU ls
+# alias ll="ls -lFh"    # works with macOS ls
+alias la='ll -A'
+
+alias tree='tree -C'
 
 alias mc="LANG=C mc"
 alias cls=clear
 alias top="top -o CPU -s 5"
 alias lines="wc -l"
 alias show="cut -c1-100"
+alias edit='~/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
+
+alias gs=gst
+alias jl='jupyter lab'
+
 
 
 alias _sql="sqlite3 -init ~/.sqlite.ini"
 #alias _sql='sqlite3 -noheader -separator "	"'
 
 
+
+
+### --- PATHs ---  ###
+export PATH=~/bin:~/local/bin:~/.miniconda/bin:/usr/local/opt/coreutils/libexec/gnubin    # my paths
+export PATH=$PATH:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin    # sys paths
+
+
+### --- Other variables ---  ###
 export EDITOR=vim
 export VISUAL=vim
+export LANG=en_US.UTF-8
 
-
-### PATH
-export PATH=~/bin:~/local/bin:~/opt/local/bin:/opt/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/ncbi/bin:/usr/local/ncbi/blast/bin:/usr/X11/bin:/opt/ncbi/bin
-
-# MacPorts 
-export PATH=~/opt/local/bin:~/opt/local/sbin:$PATH
-
-
-# added by Anaconda3 4.2.0 installer
-export PATH="/Users/david/anaconda/bin:$PATH"
+# export MANPATH=/usr/local/man:$MANPATH
+# export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig

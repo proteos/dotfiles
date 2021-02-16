@@ -1,8 +1,17 @@
+# temporary files
 *~
-.DS_Store
-
 tmp*
 *.tmp
 
+# backups
 bak*
 *.bak
+
+# macOS stuff
+.DS_Store
+
+
+# PyCharm
+.idea
+
+.secrets
