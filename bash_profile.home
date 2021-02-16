@@ -1,0 +1,48 @@
+### Home Environment
+
+# activate all my defaults
+. ~/dotfiles/bash_profile.base
+
+export EDITOR=vim
+export VISUAL=vim
+
+
+### Aliases
+alias pipi="ssh pi@10.0.0.7"
+alias nas_connect="ssh root@10.0.0.5"
+alias nas_bak="sudo  mount 10.0.0.5:/mnt/HD_b2/bak/davidmac /mnt/bak"
+alias pipi="ssh pi@10.0.0.7"
+
+
+### Disabled
+# export PATH=~/bin:/usr/local:/usr/local/ncbi/bin:/opt/local/bin:/opt/local/sbin:$PATH
+# export PATH=/usr/bin:~/bin:/usr/local:/usr/local/ncbi/bin:/opt/local/bin:/opt/local/sbin:$PATH
+# export PATH=$PATH:~/bin:/opt/local/bin:/opt/local/sbin:/usr/local/ncbi/bin
+# export PATH=~/bin:/opt/local/bin:/opt/local/sbin:/usr/local/ncbi/bin:$PATH
+# export PS1="\u@\h:\w\$"
+# export PS1="\h:\W \u\$"
+# export PS1="\u@\h\W\$"
+# export PS1="\u@\h\w\$"
+# export PS1="\h:>"
+# alias cpan="sudo /usr/bin/perl -MCPAN -e shell"
+# alias frame_connect="ssh root@10.0.0.9"
+# alias aws="ssh -i ~/.ssh/darwins-terrier.pem ubuntu@ec2-54-227-84-7.compute-1.amazonaws.com"
+# alias web_start="sudo /opt/local/etc/LaunchDaemons/org.macports.lighttpd/lighttpd.wrapper start"
+# alias web_stop="sudo /opt/local/etc/LaunchDaemons/org.macports.lighttpd/lighttpd.wrapper stop"
+# alias ncbi_connect="ssh -YC -X -L 3389:ncbipc0151.be-md.ncbi.nlm.nih.gov:3389 -l managdav ssh.ncbi.nlm.nih.gov"
+# alias ncbi_intranet="ssh -L 3128:webproxy.ncbi.nlm.nih.gov:3128 managdav@ssh.ncbi.nlm.nih.gov"
+# alias mysqlstart='sudo /opt/local/bin/mysqld_safe5 &'
+# alias mysqlstop='/opt/local/bin/mysqladmin5 -u root -p shutdown'
+###
+
+
+### PATH
+export PATH=$PATH:/opt/local/Library/Frameworks/Python.framework/Versions/Current/bin
+export PATH=~/bin:~/local/bin:~/opt/local/bin:/opt/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/ncbi/bin:/usr/local/ncbi/blast/bin:/usr/X11/bin:/opt/ncbi/bin
+
+# MacPorts 
+export PATH=~/opt/local/bin:~/opt/local/sbin:$PATH
+
+
+# added by Anaconda3 4.2.0 installer
+export PATH="/Users/david/anaconda/bin:$PATH"

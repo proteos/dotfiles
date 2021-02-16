@@ -1,0 +1,20 @@
+### Environment
+
+### Aliases
+# Connections
+#alias ncbi_connect="ssh -YC -L 5900:ncbimac7113.ncbi.nlm.nih.gov:5900 managdav@ssh.ncbi.nlm.nih.gov"
+#alias ncbi_connect="ssh -YC -L 1201:ncbimac1046.ncbi.nlm.nih.gov:5920 managdav@ssh.ncbi.nlm.nih.gov"
+#alias ncbi_connect="ssh -I /Library/OpenSC/lib/opensc-pkcs11.so -YC -X -L 1201:ncbimac1124.ncbi.nlm.nih.gov:5920 managdav@ssh.ncbi.nlm.nih.gov -i ~/.ssh/id_dsa"
+alias ncbi_connect="ssh -I /Library/OpenSC/lib/opensc-pkcs11.so -YC -X -L 1201:ncbimac1124.ncbi.nlm.nih.gov:5920 managdav@ssh.ncbi.nlm.nih.gov"
+alias ncbi_all="sudo ssh -I /Library/OpenSC/lib/opensc-pkcs11.so -YC -X -L 1201:ncbimac1124.ncbi.nlm.nih.gov:5920  -L 22:iebdev11:22 -L 3389:mslogin01:3389 -L 3128:webproxy:3128 -L 9418:stash.ncbi.nlm.nih.gov:9418 managdav@ssh.ncbi.nlm.nih.gov"
+
+
+
+### PATH
+export PATH=~/bin:~/local/bin:~/opt/local/bin:/opt/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/ncbi/bin:/usr/local/ncbi/blast/bin:/usr/X11/bin:/opt/ncbi/bin
+# MacPorts 
+export PATH=~/opt/local/bin:~/opt/local/sbin:$PATH
+
+
+# added by Anaconda3 4.2.0 installer
+export PATH="/Users/david/anaconda/bin:$PATH"

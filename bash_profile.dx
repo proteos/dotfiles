@@ -1,0 +1,10 @@
+### DNAnexus Environment
+
+# activate all my defaults
+. ~/dotfiles/bash_profile.base
+
+export EDITOR=vim
+export VISUAL=vim
+
+
+echo "END DX PROFILE"

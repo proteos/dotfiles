@@ -1,0 +1,34 @@
+### Base Environment
+
+### Aliases
+alias ls='ls -G'
+alias l="ls -1F"
+alias ll="ls -lFh"
+alias la='ls -AlFh'
+
+alias jl="jupyter lab"
+
+alias mc="LANG=C mc"
+alias cls=clear
+alias top="top -o CPU -s 5"
+alias lines="wc -l"
+alias show="cut -c1-100"
+
+
+alias _sql="sqlite3 -init ~/.sqlite.ini"
+#alias _sql='sqlite3 -noheader -separator "	"'
+
+
+export EDITOR=vim
+export VISUAL=vim
+
+
+### PATH
+export PATH=~/bin:~/local/bin:~/opt/local/bin:/opt/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/ncbi/bin:/usr/local/ncbi/blast/bin:/usr/X11/bin:/opt/ncbi/bin
+
+# MacPorts 
+export PATH=~/opt/local/bin:~/opt/local/sbin:$PATH
+
+
+# added by Anaconda3 4.2.0 installer
+export PATH="/Users/david/anaconda/bin:$PATH"

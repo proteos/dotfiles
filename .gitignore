@@ -1,3 +1,6 @@
 *.gz
 .DS_Store
-profile
+bak
+*.bak
+*.old
+
