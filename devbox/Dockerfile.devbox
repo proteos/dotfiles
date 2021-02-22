@@ -1,13 +1,78 @@
-# FROM linuxserver/code-server
-FROM ghcr.io/linuxserver/code-server
+FROM python:3.9-slim
+# FROM ubuntu
+
+# install prerequisites
+RUN apt-get update && apt-get install -y --no-install-recommends \
+	apt-utils \
+	wget \
+	curl \
+	vim \
+	tmux \
+	gnupg \
+	apt-transport-https \
+	libxtst6 && \
+	apt-get clean && rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/*
+# RUN apt-get update && apt-get install -y --no-install-recommends apt-utils wget curl vim tmux
+
+# install VS Code
+RUN wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg && \
+	install -o root -g root -m 644 packages.microsoft.gpg /etc/apt/trusted.gpg.d/ && \
+	sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/trusted.gpg.d/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list' && \
+	apt-get update && apt-get install -y --no-install-recommends \
+	code && \
+	apt-get clean && rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/*
 
 
-# Set up VSCode
+
+
+# Make a data directory that we'll mount so VSCode can be in portable mode
+# and store its config on the local machine if we mount into it.
+# RUN mkdir -p /code/data && chmod a+w /code/data
+
+
+#--- Set up VSCode ---#
+
+# Install Code Server
+RUN curl -fsSL https://code-server.dev/install.sh | sh
+
+RUN mkdir -p /codeserver/data;  chmod -R a+w /codeserver/data && \
+	mkdir -p /codeserver/extensions; chmod -R a+w /codeserver/extensions
+
+# COPY config/vscode-settings.json /codeserver/user-data/User/settings.json
+
 # useful extensions
-RUN code-server --install-extension ms-python.python --extensions-dir /config/extensions
-RUN code-server --install-extension ms-toolsai.jupyter --extensions-dir /config/extensions
-RUN code-server --install-extension jithurjacob.nbpreviewer --extensions-dir /config/extensions
-# visual stuff
-RUN code-server --install-extension equinusocio.vsc-material-theme --extensions-dir /config/extensions
-RUN code-server --install-extension pkief.material-icon-theme --extensions-dir /config/extensions
+RUN code-server --install-extension equinusocio.vsc-material-theme \
+	--extensions-dir=/codeserver/extensions --user-data-dir=/codeserver/user-data; \
+	code-server --install-extension pkief.material-icon-theme \
+	--extensions-dir=/codeserver/extensions --user-data-dir=/codeserver/user-data; \
+	code-server --install-extension ms-toolsai.jupyter \
+	--extensions-dir=/codeserver/extensions --user-data-dir=/codeserver/user-data; \
+	code-server --install-extension jithurjacob.nbpreviewer \
+	--extensions-dir=/codeserver/extensions --user-data-dir=/codeserver/user-data
+
+	# code-server --install-extension ms-python.python \
+	# --extensions-dir=/codeserver/extensions --user-data-dir=/codeserver/user-data;
+
+# We have to install a specific version of the python extension for code-server because of this bug
+# https://github.com/cdr/code-server/issues/2341
+# RUN wget https://github.com/microsoft/vscode-python/releases/download/2020.10.332292344/ms-python-release.vsix && \
+# 	code-server --force --install-extension ./ms-python-release.vsix \
+# 	--extensions-dir=/codeserver/extensions --user-data-dir=/codeserver/user-data || true
+
+RUN wget https://github.com/microsoft/vscode-python/releases/download/2021.2.582707922/ms-python-release.vsix && \
+	code-server --force --install-extension ./ms-python-release.vsix \
+	--extensions-dir=/codeserver/extensions --user-data-dir=/codeserver/user-data || true
+
+
+
+# COPY config/vscode-settings.json /code/data/user-data/User/settings.json
+
+
+RUN mkdir /workspace && chmod a+w /workspace
+CMD code-server \
+	--bind-addr 0.0.0.0:8080 \
+	--extensions-dir /codeserver/extensions \
+	--user-data-dir /codeserver/data \
+	--disable-telemetry --auth none \
+	/workspace
 

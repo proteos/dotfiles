@@ -27,6 +27,26 @@ git:
 	# my git setup
 	ln -s ~/dotfiles/git/gitignore_global ~/.gitignore_global
 
-vscode:
-	# build devbox with built-in vscode etc
+devbox:
+	# build devbox with built-in VSCode IDE etc
 	cd ~/dotfiles/devbox && docker build -t dato/devbox -f Dockerfile.devbox .
+
+# dev:
+# 	cd $$HOME/dotfiles/devbox && docker build -t dato/devbox -f Dockerfile.devbox .
+
+devbox-start: devbox-stop
+	docker run -d \
+		--name=devbox \
+		-p 8080:8080 \
+		-e PUID="$(id -u)" \
+		-e PGID="$(id -g)" \
+		-v "${HOME}/.config/code-server/settings.json:/codeserver/data/User/settings.json" \
+		-v "${PWD}:/workspace" \
+		dato/devbox
+	sleep 3
+	open -a Safari http://0.0.0.0:8080
+
+devbox-stop:
+	docker stop devbox; docker rm devbox > /dev/null || true
+
+

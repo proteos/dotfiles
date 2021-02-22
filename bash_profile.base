@@ -20,12 +20,14 @@ alias edit='~/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
 alias gs=gst
 alias jl='jupyter lab'
 
+alias dkr="docker run -it --rm"
+alias dki="docker images"
+alias dk-prune="docker system prune -f"    # purge dangling images and containers
 
-
+alias dev="make -f ~/dotfiles/Makefile dev"
+alias dev-stop="make -f ~/dotfiles/Makefile dev-stop"
 alias _sql="sqlite3 -init ~/.sqlite.ini"
 #alias _sql='sqlite3 -noheader -separator "	"'
-
-
 
 
 ### --- PATHs ---  ###
