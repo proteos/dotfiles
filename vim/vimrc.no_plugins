@@ -1,0 +1,25 @@
+" from presentation: https://www.youtube.com/watch?v=XA2WjJbmmoM
+" source: https://github.com/changemewtf/no_plugins/blob/master/no_plugins.vim
+
+" {{{ BASIC SETUP
+" BASIC SETUP:
+
+" enter the current millenium
+set nocompatible
+
+" enable syntax and plugins (for netrw)
+syntax enable
+filetype plugin on
+
+
+" FINDING FILES:
+" Search down into subfolders
+" Provides tab-completion for all file-related tasks
+set path+=**    " search for files through directories recursively; can even take *globs*
+
+" Display all matching files when we tab complete
+set wildmenu
+
+
+" MY ADDITIONS
+set number

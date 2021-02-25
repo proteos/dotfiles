@@ -1,0 +1,84 @@
+" --------------------------------------------------------------------------------
+" various
+" --------------------------------------------------------------------------------
+syntax on
+set nocompatible            " don't try to be vi-compatible
+filetype plugin indent on
+set number				" Set line numbering
+set encoding=utf-8
+set bs=2				" allow backspacing over everything in insert mode
+set ts=4				" tab stop length
+set ai					" always set autoindenting on
+set viminfo='50,\"90   	" read/write a .viminfo file, don't store more than 50 lines of registers
+set history=50     		" keep 50 lines of command line history
+set ruler       		" show the cursor position (row, column) in status line
+set showcmd             " show (partial) command in status line
+
+
+
+" --------------------------------------------------------------------------------
+" theme
+" --------------------------------------------------------------------------------
+"color desert
+"color ron
+color delek
+
+
+" --------------------------------------------------------------------------------
+" code folding
+" --------------------------------------------------------------------------------
+set foldmethod=indent
+set foldlevel=99
+" Enable folding with the spacebar
+nnoremap <space> za
+
+" --------------------------------------------------------------------------------
+" configure expanding of tabs for various file types
+" --------------------------------------------------------------------------------
+au BufRead,BufNewFile *.py set expandtab
+au BufRead,BufNewFile *.c set noexpandtab
+au BufRead,BufNewFile *.h set noexpandtab
+au BufRead,BufNewFile Makefile* set noexpandtab
+
+" --------------------------------------------------------------------------------
+" configure editor with tabs and nice stuff...
+" --------------------------------------------------------------------------------
+set expandtab           " enter spaces when tab is pressed
+set textwidth=120       " break lines when line length increases
+set tabstop=4           " use 4 spaces to represent tab
+set softtabstop=4
+set shiftwidth=4        " number of spaces to use for auto indent
+set autoindent          " copy indent from current line when starting a new line
+set smartindent
+set smarttab
+set backspace=indent,eol,start		" Make backspaces more powerfull
+
+
+
+
+
+" --------------------------------------------------------------------------------
+" disabled
+" --------------------------------------------------------------------------------
+"set backup     		" keep a backup file
+"set iskeyword=-,48-58,A-Z,a-z,_
+"set incsearch
+
+let python_highlight_all=1
+
+" --------------------------------------------------------------------------------
+" Python
+" --------------------------------------------------------------------------------
+au BufNewFile,BufRead *.py
+    \ set tabstop=4 |
+    \ set softtabstop=4 |
+    \ set shiftwidth=4 |
+    \ set textwidth=79 |
+    \ set expandtab |
+    \ set autoindent |
+    \ set fileformat=unix |
+
+au BufNewFile,BufRead *.js,*.html,*.css
+    \ set tabstop=2 |
+    \ set softtabstop=2 |
+    \ set shiftwidth=2 |
