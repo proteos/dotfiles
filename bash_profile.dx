@@ -7,8 +7,6 @@
 # PATHs
 
 
-
-
 ### --- Aliases ---  ###
 alias x="conda activate venv3"
 alias x_main="x; dx login --token $DX_TOKEN_MAIN"
@@ -30,7 +28,17 @@ alias wdl="java -jar ~/local/lib/dxCompiler"
 # alias _dx ". ~/local/bin/start_dx"
 
 
-## Python stuff
+###--- Python stuff ---###
 # pyenv-virtualenv shell integration
 alias py2="pyenv shell 2.7.15"
 alias py3="pyenv shell 3.8.2"
+
+
+# DNAnexus SDK tab completion
+# source: https://documentation.dnanexus.com/downloads#dnanexus-platform-sdk
+# for zsh, use:
+autoload -Uz compinit && compinit
+autoload bashcompinit && bashcompinit
+eval "$(register-python-argcomplete dx|sed 's/-o default//')"
+# for bash, use:
+# eval "$(register-python-argcomplete dx|sed 's/-o default//')"

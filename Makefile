@@ -18,6 +18,10 @@ vim:
 	# vim setup
 	ln -s ~/dotfiles/vim/vimrc ~/.vimrc
 
+vim-no-plugins:
+	mv ~/.vimrc ~/.vimrc.bak
+	ln -s /dotfiles/vim/vimrc.no_plugins ~/.vimrc
+
 emaces:
 	# emacs
 	ln -s ~/dotfiles/emacs/emacs ~/.emacs
