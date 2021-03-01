@@ -9,6 +9,10 @@ zsh:
 	ln -s ~/dotfiles/zsh/dato-af-magic.zsh-theme ~/.oh-my-zsh/themes/
 	mv ~/.zshrc ~/.zshrc.pre-setup
 	ln -s ~/dotfiles/zsh/zshrc ~/.zshrc
+	# auto-suggestions plugin
+	git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
+	# syntax highlighting
+	git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
 
 bash:
 	# setup terminal profile
