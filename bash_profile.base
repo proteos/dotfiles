@@ -34,7 +34,6 @@ alias _sql="sqlite3 -init ~/.sqlite.ini"
 export PATH=~/bin:~/local/bin:~/.miniconda/bin:/usr/local/opt/coreutils/libexec/gnubin    # my paths
 export PATH=$PATH:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin    # sys paths
 
-
 ### --- Other variables ---  ###
 export EDITOR=vim
 export VISUAL=vim

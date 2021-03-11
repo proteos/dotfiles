@@ -22,8 +22,10 @@ alias beeline="cd ~/local/spark/bin; ./beeline"
 alias bee_dev="~/local/spark/bin/beeline -u jdbc:hive2://query.us-east-1.translational.dnanexus.com:10000/\;ssl=true -n $DX_BEELINE_DEV"
 alias bee_coh="~/local/spark/bin/beeline -u jdbc:hive2://query.us-east-1.translational.dnanexus.com:10000/\;ssl=true -n $DX_BEELINE_COH"
 
-alias af="conda activate airflow; cd ~/dev/airflow; breeze start-airflow"
+alias af="conda activate airflow; cd ~/dev/dx-airflow; make bak; cd ~/dev/airflow; ./breeze start-airflow"
 alias wdl="java -jar ~/local/lib/dxCompiler"
+
+alias myip="curl https://checkip.amazonaws.com"
 
 # alias _dx ". ~/local/bin/start_dx"
 
