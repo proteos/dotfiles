@@ -13,7 +13,7 @@ set viminfo='50,\"90   	" read/write a .viminfo file, don't store more than 50 l
 set history=50     		" keep 50 lines of command line history
 set ruler       		" show the cursor position (row, column) in status line
 set showcmd             " show (partial) command in status line
-
+set splitright
 
 
 " --------------------------------------------------------------------------------

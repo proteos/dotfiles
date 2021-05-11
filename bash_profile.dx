@@ -44,3 +44,4 @@ autoload bashcompinit && bashcompinit
 eval "$(register-python-argcomplete dx|sed 's/-o default//')"
 # for bash, use:
 # eval "$(register-python-argcomplete dx|sed 's/-o default//')"
+alias gcp='gcloud beta compute ssh --zone "us-west1-a" "baylor-dev-dato"  --project "ccdg-baylor"'
