@@ -8,7 +8,8 @@
 
 
 ### --- Aliases ---  ###
-alias x="conda activate venv3"
+# alias x="conda activate venv3"
+alias x="conda activate xds"
 alias x_main="x; dx login --token $DX_TOKEN_MAIN"
 alias x_coh="x; dx login --token $DX_TOKEN_COH"
 alias x_dev="x; dx login --token $DX_TOKEN_DEV"
@@ -20,10 +21,6 @@ alias x_biogen="x; dx login --token $DX_TOKEN_BIOGEN"
 alias dxd="dx describe"
 alias dxl="dx ls -al"
 alias beeline="cd ~/local/spark/bin; ./beeline"
-
-# alias bee_dev="~/local/spark/bin/beeline -u jdbc:hive2://query.us-east-1.translational.dnanexus.com:10000/\;ssl=true -n $DX_BEELINE_DEV"
-# alias bee_coh="~/local/spark/bin/beeline -u jdbc:hive2://query.us-east-1.translational.dnanexus.com:10000/\;ssl=true -n $DX_BEELINE_COH"
-# alias bee_training="~/local/spark/bin/beeline -u jdbc:hive2://query.us-east-1.translational.dnanexus.com:10000/\;ssl=true -n $DX_BEELINE_TRAINING"
 
 alias bee_dev="~/local/spark/bin/beeline -u jdbc:hive2://query.us-east-1.apollo.dnanexus.com:10000/\;ssl=true -n $DX_BEELINE_DEV"
 alias bee_dev_eu="~/local/spark/bin/beeline -u jdbc:hive2://query.eu-central-1.apollo.dnanexus.com:10000/\;ssl=true -n $DX_BEELINE_DEV_EU"
@@ -52,4 +49,4 @@ alias py3="pyenv shell 3.8.2"
 #eval "$(register-python-argcomplete dx|sed 's/-o default//')"
 # for bash, use:
 # eval "$(register-python-argcomplete dx|sed 's/-o default//')"
-alias gcp='gcloud beta compute ssh --zone "us-west1-a" "baylor-dev-dato"  --project "ccdg-baylor"'
+alias gcp='conda activate gcloud; gcloud beta compute ssh --zone "us-west1-a" "baylor-dev-dato"  --project "ccdg-baylor"'
