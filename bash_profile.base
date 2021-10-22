@@ -23,6 +23,7 @@ alias jl='jupyter lab'
 alias dkr="docker run -it --rm"
 alias dki="docker images"
 alias dk-prune="docker system prune -f"    # purge dangling images and containers
+alias dk-clean='docker container kill $(docker ps -q) 2>&1 >/dev/null && docker container rm $(docker ps -a -q) 2>&1 >/dev/null'
 
 alias dev="make -f ~/dotfiles/Makefile dev"
 alias dev-stop="make -f ~/dotfiles/Makefile dev-stop"
